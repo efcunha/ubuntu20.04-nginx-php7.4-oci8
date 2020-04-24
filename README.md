@@ -4,8 +4,8 @@ A project to build a docker image Ubuntu 20.04 with php7.4, Nginx and oci8 drive
 Ler em [português](https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8/tree/master/translation)
 
 ```
-git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
-docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8.git:7.4 .
+sudo git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
+sudo docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8.git:7.4 .
 ```
 
 ## Running
@@ -18,7 +18,7 @@ You can then browse to ```http://<DOCKER_HOST>:8080``` to view the default insta
 ### Volumes
 If you want to link to your web site directory on the docker host to the container run:
 ```
-docker run -d --name nginx -p 8080:80 -v /your_code_directory:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
+sudo docker run -d --name nginx -p 8080:80 -v /your_code_directory:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 ### Linking
@@ -27,7 +27,7 @@ which is useful for templating and configuring web apps.
 
 Run MySQL container with some extra details:
 ```
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=yayMySQL -e MYSQL_DATABASE=wordpress \
+sudo docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=yayMySQL -e MYSQL_DATABASE=wordpress \
 -e MYSQL_USER=wordpress_user -e MYSQL_PASSWORD=wordpress_password -d mysql
 ```
 
@@ -51,13 +51,13 @@ MYSQL_PORT=tcp://XXX.XXX.XXX.XXX:3306
 ### Push code to Git
 To push code changes back to git simply run:
 ```
-docker exec -t -i <CONTAINER_NAME> /usr/bin/push
+sudo docker exec -t -i <CONTAINER_NAME> /usr/bin/push
 ```
 
 ### Pull code from Git (Refresh)
 In order to refresh the code in a container and pull newer code form git simply run:
 ```
-docker exec -t -i <CONTAINER_NAME> /usr/bin/pull
+sudo docker exec -t -i <CONTAINER_NAME> /usr/bin/pull
 ```
 
 ### Templating

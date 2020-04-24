@@ -3,14 +3,14 @@ Um projeto para construir uma imagem docker Ubuntu 20.04 com Nginx, php7.4 e dri
 
 Para baixar a imagem:
 ```
-git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
-docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4 .
+sudo git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
+sudo docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4 .
 ```
 
 ## Instanciando o container
 Comando para executar co container:
 ```
-docker run -d --name nginx -p 8080:80 efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
+sudo docker run -d --name nginx -p 8080:80 efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 Para visualizar abra um browze   ```http://<DOCKER_HOST>:8080```  Voçê visualizará uma pagina padrão.
@@ -19,7 +19,7 @@ Para visualizar abra um browze   ```http://<DOCKER_HOST>:8080```  Voçê visuali
 
 Se voçê desejar adicionar um diretorio de uma aplicação Web no Container:
 ```
-docker run -d --name nginx -p 8080:80 -v caminho/para/sua/aplicação_php:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
+sudo docker run -d --name nginx -p 8080:80 -v caminho/para/sua/aplicação_php:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 ### Conectando em um Banco MYSQL
 A vinculação a contêiners também expõe as variáveis de ambiente do contêiner.
@@ -27,7 +27,7 @@ A vinculação a contêiners também expõe as variáveis de ambiente do contêi
 
 Run MySQL container com alguns detalhes extras:
 ```
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=yayMySQL -e MYSQL_DATABASE=wordpress -e \
+sudo docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=yayMySQL -e MYSQL_DATABASE=wordpress -e \
 MYSQL_USER=wordpress_user -e MYSQL_PASSWORD=wordpress_password -d mysql
 ```
 
@@ -50,13 +50,13 @@ MYSQL_PORT=tcp://XXX.XXX.XXX.XXX:3306
 ### Empurre o código para o Git
 Para enviar as alterações de código de volta ao git, basta executar:
 `` ``
-docker exec -t -i <CONTAINER_NAME> /usr/bin/push
+sudo docker exec -t -i <CONTAINER_NAME> /usr/bin/push
 `` ``
 
 ### Retirar código do Git (Atualizar)
 Para atualizar o código em um contêiner e puxar o formulário de código mais recente, git simplesmente execute:
 `` ``
-docker exec -t -i <CONTAINER_NAME> /usr/bin/pull
+sudo docker exec -t -i <CONTAINER_NAME> /usr/bin/pull
 `` ``
 
 ### Modelo
@@ -80,7 +80,7 @@ pode passar variáveis diretamente para o contêiner que será configurado autom
 
 Exemplo:
 ```
-docker run -e 'GIT_REPO=git@git.ngd.io:ngineered/ngineered-website.git' -e 'TEMPLATE_NGINX_HTML=1' \
+sudo docker run -e 'GIT_REPO=git@git.ngd.io:ngineered/ngineered-website.git' -e 'TEMPLATE_NGINX_HTML=1' \
 -e 'GIT_BRANCH=stage' -e 'MYSQL_HOST=host.x.y.z' -e 'MYSQL_USER=username' -e 'MYSQL_PASS=password' \
 -v /opt/ngddeploy/:/root/.ssh -p 8080:80 -d efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
