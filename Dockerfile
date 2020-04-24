@@ -61,7 +61,7 @@ RUN phpenmod mcrypt
 RUN rm -Rf /etc/nginx/conf.d/* && \
 rm -Rf /etc/nginx/sites-available/default && \
 rm -Rf /etc/nginx/sites-enabled/default && \
-mkdir -p /etc/nginx/ssl/
+mkdir -p /etc/nginx/ssl/ && \
 mkdir -p /etc/php/7.4/mods-available/
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
