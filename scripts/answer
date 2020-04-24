@@ -1,0 +1,5 @@
+#!/usr/bin/expect -f
+spawn ./install-oci8.sh
+expect "Please provide the path to the ORACLE_HOME directory. Use 'instantclient,/path/to/instant/client/lib' if you're compiling with Oracle Instant Client \[autodetect\]: \r"
+send -- "instantclient,/usr/local/instantclient_19_6\r"
+expect eof
