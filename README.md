@@ -1,24 +1,24 @@
-# Ubuntu 19.10 Nginx PHP7.4 with OCI8 driver
-A project to build a docker image with php7.4, Nginx and oci8 driver.
+# Ubuntu 20.04 Nginx PHP7.4 with OCI8 driver
+A project to build a docker image Ubuntu 20.04 with php7.4, Nginx and oci8 driver.
 
-Ler em [português](https://github.com/efcunha/nginx-php7.4-oci8/tree/master/translation)
+Ler em [português](https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8/tree/master/translation)
 
 ```
-git clone https://github.com/efcunha/nginx-php7.4-oci8.git
-docker build -t efcunha/nginx-php7.4-oci8.git:7.4 .
+git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
+docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8.git:7.4 .
 ```
 
 ## Running
 To simply run the container:
 ```
-docker run -d --name nginx -p 8080:80 efcunha/nginx-php7.4-oci8:7.4
+docker run -d --name nginx -p 8080:80 efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 You can then browse to ```http://<DOCKER_HOST>:8080``` to view the default install files.
 ### Volumes
 If you want to link to your web site directory on the docker host to the container run:
 ```
-docker run -d --name nginx -p 8080:80 -v /your_code_directory:/var/www efcunha/nginx-php7.4-oci8:7.4
+docker run -d --name nginx -p 8080:80 -v /your_code_directory:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 ### Linking
@@ -84,7 +84,7 @@ Example:
 sudo docker run -e 'GIT_REPO=git@git.ngd.io:ngineered/ngineered-website.git' \
 -e 'TEMPLATE_NGINX_HTML=1' -e 'GIT_BRANCH=stage' -e 'MYSQL_HOST=host.x.y.z' \
 -e 'MYSQL_USER=username' -e 'MYSQL_PASS=password' -v /opt/ngddeploy/:/root/.ssh -p 8080:80 \
--d efcunha/nginx-php7.4-oci8:7.4
+-d efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 This will expose the following variables that can be used to template your code.

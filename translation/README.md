@@ -1,16 +1,16 @@
-# Ubuntu 19.10 Nginx PHP7.4 with OCI8 driver
-Um projeto para construir uma imagem docker com Nginx, php7.4 e driver oci8.
+# Ubuntu 20.04 Nginx PHP7.4 with OCI8 driver
+Um projeto para construir uma imagem docker Ubuntu 20.04 com Nginx, php7.4 e driver oci8.
 
 Para baixar a imagem:
 ```
-git clone https://github.com/efcunha/nginx-php7.4-oci8.git
-docker build -t efcunha/nginx-php7.4-oci8.git:7.4 .
+git clone https://github.com/efcunha/ubuntu20.04-nginx-php7.4-oci8.git
+docker build -t efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4 .
 ```
 
 ## Instanciando o container
 Comando para executar co container:
 ```
-docker run -d --name nginx -p 8080:80 efcunha/nginx-php7.4-oci8:7.4
+docker run -d --name nginx -p 8080:80 efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 
 Para visualizar abra um browze   ```http://<DOCKER_HOST>:8080```  Voçê visualizará uma pagina padrão.
@@ -19,7 +19,7 @@ Para visualizar abra um browze   ```http://<DOCKER_HOST>:8080```  Voçê visuali
 
 Se voçê desejar adicionar um diretorio de uma aplicação Web no Container:
 ```
-docker run -d --name nginx -p 8080:80 -v caminho/para/sua/aplicação_php:/var/www efcunha/nginx-php7.4-oci8:7.4
+docker run -d --name nginx -p 8080:80 -v caminho/para/sua/aplicação_php:/var/www efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 ### Conectando em um Banco MYSQL
 A vinculação a contêiners também expõe as variáveis de ambiente do contêiner.
@@ -82,7 +82,7 @@ Exemplo:
 ```
 docker run -e 'GIT_REPO=git@git.ngd.io:ngineered/ngineered-website.git' -e 'TEMPLATE_NGINX_HTML=1' \
 -e 'GIT_BRANCH=stage' -e 'MYSQL_HOST=host.x.y.z' -e 'MYSQL_USER=username' -e 'MYSQL_PASS=password' \
--v /opt/ngddeploy/:/root/.ssh -p 8080:80 -d efcunha/nginx-php7.4-oci8:7.4
+-v /opt/ngddeploy/:/root/.ssh -p 8080:80 -d efcunha/ubuntu20.04-nginx-php7.4-oci8:7.4
 ```
 Isso irá expor as seguintes variáveis que podem ser usadas para modelar seu código.
 `` ``
@@ -125,6 +125,4 @@ Se você deseja exibir erros de PHP na tela (no navegador) para fins de depuraç
 `` ``
 
 Para mais opções em instanciação de containers, leia a:
- [docker run reference](https://docs.docker.com/engine/reference/run/).
-
-
+ [docker run reference](https://docs.docker.com/engine/reference/run/)
